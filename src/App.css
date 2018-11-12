@@ -1,32 +1,121 @@
-.App {
-  text-align: center;
+/* Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    /* font-family: 'Alegreya Sans', sans-serif; */
+    color: #6d5d4b;
+    font-weight: 300; 
+    background-color: #2C3E50;
 }
 
-.App-link {
-  color: #61dafb;
+/* Wrapper */
+.page-wrapper {
+    display: grid;
+    grid-template-rows: 25vh auto min-content 20vh;
+    grid-template-columns: 1fr min-content 1fr;
+    grid-gap: 1.5rem;
+    margin: 0 auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Quote Box */
+#quote-box {
+    width: 50rem;
+    border-radius: 4px;
+    background-color: #fff;
+    grid-row: 2;
+    grid-column: 2;
+    padding: 3rem;
+    text-align: center;
+    display: grid;
+    grid-template-rows: repeat(3, minmax(min-content, max-content));
+    grid-template-columns: repeat(3, minmax(min-content, 1fr));
+    grid-row-gap: 1.5rem;
+    justify-items: center;
+    align-items: center;
+}
+
+#text {
+    font-size: 2.8rem;
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+    color: #2C3E50;
+    font-style: italic;
+}
+
+#author {
+    font-size: 1.6rem;
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.social-sharing {
+    grid-row: 3;
+    grid-column: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: .7rem;
+}
+
+#tweet-quote:link,
+#tweet-quote:visited {
+    font-size: 4rem;
+    color: #2C3E50;
+    background-color: #fff;
+    text-decoration: none;
+    transition: all .5s;
+}
+
+#facebook-quote:link,
+#facebook-quote:visited {
+    font-size: 4rem;
+    color: #2C3E50;
+    background-color: #fff;
+    text-decoration: none;
+    transition: all .5s;
+}
+
+#tweet-quote:hover,
+#facebook-quote:hover {
+    color: rgb(55, 75, 94);
+}
+
+#new-quote {
+    background-color: #2C3E50;
+    color: #fff;
+    padding: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .5s;
+    grid-row: 3;
+    grid-column: 3;
+}
+
+#new-quote:hover {
+    background-color: rgb(55, 75, 94);
+}
+
+/* Credit */
+.credit {
+    grid-row: 3;
+    grid-column: 2;
+    text-align: center;
+}
+
+#credit-link {
+    color: #fff;
+    font-size: 1.4rem;
+    text-decoration: none;
 }
