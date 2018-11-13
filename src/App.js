@@ -1,39 +1,70 @@
 import React, { Component } from "react";
 import "./App.css";
 
-const quotes = [1, 2, 3, 4, 5];
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      randomIndex: "",  // select a quote randomnly
-      quotes: "",  // get quote through API
-      author: ""   // get author through API
+      quotes: "", // get quote through API
+      author: "", // get author through API
+      trimmedQuotes: []
     };
-    this.getQuote = this.getQuote.bind(this);
+    this.getNewQuote = this.getNewQuote.bind(this);
+    this.shareOnTwitter = this.shareOnTwitter.bind(this);
   }
 
-  getQuote() {
-    setTimeout(() => {
-      this.setState({
-        randomIndex: Math.floor(Math.random() * quotes.length)
+  componentDidMount() {
+    fetch("https://talaikis.com/api/quotes/random")
+      .then(function(res) {
+        return res.json();
+      })
+      .then(
+        function(data) {
+          this.setState({
+            quotes: data.quote,
+            author: data.author
+          });
+        }.bind(this)
+      ).catch(function(err) {
+        console.log(err)
       });
-    }, 500);
+  }
+
+  getNewQuote() {
+    fetch("https://talaikis.com/api/quotes/random")
+      .then(function(res) {
+        return res.json();
+      })
+      .then(
+        function(data) {
+          this.setState({
+            quotes: data.quote,
+            author: data.author
+          });
+        }.bind(this)
+      ).catch(function(err) {
+        console.log(err);
+      });
+  }
+
+  shareOnTwitter() {
+    window.open(`https://twitter.com/intent/tweet?text="${this.state.quotes}" - ${this.state.author}`);
   }
 
   render() {
-    const result = quotes[this.state.randomIndex];
+    const { quotes, author } = this.state;
 
     return (
       <div className="page-wrapper">
         <div id="quote-box">
-          <div id="text">&ldquo;{result}&rdquo;</div>
+          <div id="text">
+            <blockquote>&ldquo;{quotes}&rdquo;</blockquote>
+          </div>
 
-          <p id="author">- Author</p>
+          <cite id="author">- {author}</cite>
 
           <div className="social-sharing">
-            <a href="twitter.com/intent/tweet" id="tweet-quote">
+            <a href="twitter.com/intent/tweet" id="tweet-quote" onClick={this.shareOnTwitter}>
               <i className="fab fa-twitter-square" />
             </a>
             <a href="https://facebook.com" id="facebook-quote">
@@ -41,7 +72,7 @@ class App extends Component {
             </a>
           </div>
 
-          <button id="new-quote" onClick={this.getQuote}>
+          <button id="new-quote" onClick={this.getNewQuote}>
             New quote
           </button>
         </div>
@@ -53,7 +84,7 @@ class App extends Component {
             rel="noopener noreferrer"
             id="credit-link"
           >
-            downthematrix
+            By downthematrix
           </a>
         </div>
       </div>
