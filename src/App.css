@@ -15,7 +15,6 @@ html {
 body {
     font-family: 'Nunito Sans', sans-serif;
     /* font-family: 'Alegreya Sans', sans-serif; */
-    color: #6d5d4b;
     font-weight: 300; 
     background-color: #2C3E50;
 }
@@ -23,15 +22,16 @@ body {
 /* Wrapper */
 .page-wrapper {
     display: grid;
-    grid-template-rows: 25vh auto min-content 20vh;
-    grid-template-columns: 1fr min-content 1fr;
+    grid-template-rows: 30vh auto min-content 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1.5rem;
-    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
 }
 
 /* Quote Box */
 #quote-box {
-    width: 50rem;
+    width: 50rem;;
     border-radius: 4px;
     background-color: #fff;
     grid-row: 2;
@@ -44,6 +44,7 @@ body {
     grid-row-gap: 1.5rem;
     justify-items: center;
     align-items: center;
+    transition: all .8s;
 }
 
 #text {
@@ -91,6 +92,11 @@ body {
     color: rgb(55, 75, 94);
 }
 
+#tweet-quote:active,
+#facebook-quote:active {
+    transform: translateY(-3px);
+}
+
 #new-quote {
     background-color: #2C3E50;
     color: #fff;
@@ -118,4 +124,11 @@ body {
     color: #fff;
     font-size: 1.4rem;
     text-decoration: none;
+}
+
+/* Media Queries */
+@media screen and (max-width: 550px) {
+    #quote-box {
+        transform: scale(.8);
+    }
 }
