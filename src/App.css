@@ -22,7 +22,7 @@ body {
 /* Wrapper */
 .page-wrapper {
     display: grid;
-    grid-template-rows: 30vh auto min-content 1fr;
+    grid-template-rows: 25vh auto min-content 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1.5rem;
     justify-content: center;
@@ -31,7 +31,7 @@ body {
 
 /* Quote Box */
 #quote-box {
-    width: 80vw;
+    width: 70vw;
     border-radius: 4px;
     background-color: #fff;
     grid-row: 2;
